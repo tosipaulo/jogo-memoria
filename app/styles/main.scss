@@ -1,31 +1,53 @@
 // bower:scss
 // endbower
 
-.browserupgrade {
-  margin: 0.2em 0;
+.game__card {
+  width: 1133px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.card {
+  width: 168px;
+  height: 171px;
+  position: relative;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border: 2px solid #aaa;
   background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+  transition: all .2s;
+  perspective: 600px;
 }
 
-body {
-  background: #fafafa;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+.card:hover {
+  box-shadow: 0 0 10px #aaa;
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 300px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
+.face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: all .5s;
+}
+
+.back {
+  background: url('../images/verso.png') no-repeat;
+  backface-visibility: hidden;
+}
+
+.front {
+  background: url('../images/card1.png') no-repeat;
+  transform: rotateY(-180deg);
+  backface-visibility: hidden;
+}
+
+.flipped .back {
+  transform: rotateY(180deg);
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
 }
