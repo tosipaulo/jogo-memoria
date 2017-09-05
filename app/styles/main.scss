@@ -2,6 +2,10 @@
 @import '_utilities/index';
 @import "_layout/index";
 
+.game {
+  margin: auto;
+}
+
 .game__card {
   width: 100%;
   display: flex;

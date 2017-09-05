@@ -32,7 +32,7 @@ let Card = (function(){
 		api.get(`${urlApi}`)
 			.then((card) => {
 				card.data.map((item) => cards.push(item))
-				cards.map((item) => cards.push(item))
+				if(cards.length <= 12) cards.map((item) => cards.push(item))
 				shuffle(cards);
 			})
 			.then(initRenderCards)
