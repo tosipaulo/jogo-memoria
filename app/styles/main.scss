@@ -1,29 +1,81 @@
-// bower:scss
-// endbower
+@import '_base/index';
+@import '_utilities/index';
+@import "_layout/index";
 
 .game__card {
-  width: 1133px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: auto;
+
+  @media(min-width: 1200px) {
+    width: 1133px;
+  }
 }
 
 .card {
-  width: 168px;
-  height: 171px;
+  width: 70px;
+  height: 70px;
   position: relative;
   border-radius: 10px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   overflow: hidden;
   border: 2px solid #aaa;
   background: #ccc;
   transition: all .2s;
   perspective: 600px;
+  cursor: pointer;
+  transition: all .2s;
+
+  @media(min-width: 414px) {
+    width: 80px;
+    height: 80px;
+  }
+
+  @media (min-width: 480px) and (orientation: landscape) {
+    width: 65px;
+    height: 65px;
+  }
+
+  @media(min-width: 600px) {
+    width: 82px;
+    height: 82px;
+  }
+
+  @media (min-width: 667px) and (orientation: landscape) {
+    width: 95px;
+    height: 95px;
+  }
+
+  @media (min-width: 736px) and (orientation: landscape) {
+    width: 105px;
+    height: 105px;
+  }
+
+  @media(min-width: 768px) {
+    width: 115px;
+    height: 115px;
+  }
+
+  @media(min-width: 1200px) {
+    width: 168px;
+    height: 171px;
+  }
 }
 
-.card:hover {
+
+@media(min-width: 1024px) {
+  .card:hover {
+    box-shadow: 0 0 10px #aaa;
+    transform: translateY(-2px);
+  }
+}
+
+
+.card.active {
   box-shadow: 0 0 10px #aaa;
+  transform: translateY(-2px);
 }
 
 .face {
@@ -35,11 +87,13 @@
 
 .back {
   background: url('../images/verso.png') no-repeat;
+  background-size: cover;
   backface-visibility: hidden;
 }
 
 .front {
   background: url('../images/card1.png') no-repeat;
+  background-size: cover;
   transform: rotateY(-180deg);
   backface-visibility: hidden;
 }

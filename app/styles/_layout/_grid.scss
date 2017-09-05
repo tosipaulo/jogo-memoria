@@ -1,0 +1,116 @@
+/*************************************************************************************************/
+/* Configuração para GRID */
+/*************************************************************************************************/
+$grid-column-number: 12 !default;
+$grid-margin: 15px !default;
+$grid-margin-negative: -15px !default;
+$grid-column-width: (100%/$grid-column-number) !default; 
+$grid-max-width: 1300px !default;
+$screen-md: 1200px !default;
+$container-md: 1200px !default;
+$screen-lg: 1400px !default;
+$container-lg: 1300px !default;
+
+
+/*************************************************************************************************/
+/* Negative Colluns */
+/*************************************************************************************************/
+.row{
+	margin-left: $grid-margin-negative;
+	margin-right: $grid-margin-negative;
+}
+
+/*************************************************************************************************/
+/* Columns */
+/*************************************************************************************************/
+
+@mixin col($number-of-cols) {
+	@if ($number-of-cols == flex) {
+	
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		-js-display: flex;
+		display: flex;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		-js-flex-wrap: wrap;
+		flex-wrap: wrap;
+		box-sizing: border-box;
+
+	} @else {
+		/*flex-basis: ($number-of-cols * $grid-column-width);*/
+		width: ($number-of-cols * $grid-column-width);
+		padding-left: $grid-margin;
+		padding-right: $grid-margin;
+	}
+}
+
+%col-flex {
+	@include col(flex);
+}
+
+@for $i from 1 through $grid-column-number {
+
+	%col-#{$i} {
+		@include col($i);
+	}    
+
+}
+
+
+/*************************************************************************************************/
+/* Offset */ 
+/*************************************************************************************************/
+
+@mixin offset($number-of-offset) {
+	$number-of-offset: percentage(($number-of-offset / $grid-column-number));
+	margin-left: $number-of-offset;
+}
+
+
+
+@for $i from 1 through $grid-column-number {
+	%offset-#{$i} {
+		@include offset($i);
+	}
+}
+
+
+/*************************************************************************************************/
+/* CONTAINER */
+/*************************************************************************************************/
+
+%container {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	-js-display: flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-js-flex-wrap: wrap;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+	max-width: 100%;
+	margin: auto;
+
+	@media (min-width: $screen-md) {
+		width: $container-md;
+	}
+	@media (min-width: $screen-lg) {
+		width: $container-lg;
+	}
+}
+
+
+/*************************************************************************************************/
+/* Class container   */ 
+/*************************************************************************************************/
+
+.l-container {
+	@extend %container;	
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
