@@ -89,11 +89,15 @@ let Card = (function(){
 		let select = document.querySelectorAll('.flipped');
 		let cardAll = document.querySelectorAll('.card');
 
+		
+
 		if(isMatchPattern(select)){
 			select.forEach((el) => {
-				el.style.opacity = '0.0'
+				//el.style.opacity = '0.0'
+				el.classList.add('remove');
 				el.classList.remove('flipped');
 				el.classList.remove('active');
+				countClassRemove()
 			})
 
 		}else{
@@ -107,7 +111,11 @@ let Card = (function(){
 
 	const isMatchPattern = (select) => select[0].getAttribute('data-id') == select[1].getAttribute('data-id')
 	
-
+	const countClassRemove  = () => {
+		let cardRemove = document.querySelectorAll('.card.remove')
+		if(cardRemove.length >= 24) 
+			console.log('final')
+	}
 
 /* 	function selectCard() {
 		if ($(".card-flipped").size() > 1) {
